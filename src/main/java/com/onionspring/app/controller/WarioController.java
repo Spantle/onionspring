@@ -11,6 +11,6 @@ public class WarioController {
 	public String showWario(@RequestParam(name = "action", required = false, defaultValue = "winning") String action,
 			Model model) {
 		model.addAttribute("action", action);
-		return "wario2"; // the filename (wario.html)
+		return "wario"; // the filename (wario.html)
 	}
 }

@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Login {
-
-    @GetMapping("/login")
+    @GetMapping("/api/login")
     public String login(@RequestParam(value = "name", defaultValue = "Default Name") String name) {
         return String.format("Pretending to login %s", name);
     }
