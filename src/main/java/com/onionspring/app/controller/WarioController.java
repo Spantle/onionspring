@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class WarioController {
 	@GetMapping("/wario") // the path
-	public String showWario(@RequestParam(name = "action", required = false, defaultValue = "winning") String action,
+	public String showWario(@RequestParam(name = "action", required = false, defaultValue = "always winning") String action,
 			Model model) {
 		model.addAttribute("action", action);
 		return "wario"; // the filename (wario.html)
