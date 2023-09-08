@@ -37,5 +37,5 @@ jobs:
       uses: actions/upload-artifact@v3 # Using the actions/upload-artifact template
       with:
         # Use the name of the branch
-        name: onionspring-${{ steps.extract_branch.outputs.branch }}.jar # The name of the build artifact
+        name: onionspring-${{ steps.extract_branch.outputs.branch }} # The name of the build artifact
         path: build/libs/app-0.0.1-SNAPSHOT.jar # The path to the build artifact
