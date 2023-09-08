@@ -27,3 +27,10 @@ jobs:
 
     - name: Execute Gradle build # Executes the Gradle build
       run: ./gradlew build
+
+    - name: Upload build artifacts # Uploads the build artifacts to GitHub
+      uses: actions/upload-artifact@v3 # Using the actions/upload-artifact template
+      with:
+        # Use the name of the branch
+        name: onionspring-${ github.ref }
+        path: build/libs # The path to the build artifact
