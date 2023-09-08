@@ -22,15 +22,20 @@ jobs:
     - name: Chmod Gradlew # Changes the permissions of the Gradle wrapper
       run: chmod +x gradlew # Allows the Gradle wrapper to be executed
 
-    - name: Run Unit Tests # Executes the unit tests
+    - name: Run Unit Tests
       run: ./gradlew test
 
-    - name: Execute Gradle build # Executes the Gradle build
+    - name: Execute Gradle build
       run: ./gradlew build
+
+    - name: Extract branch name
+      id: extract_branch
+      shell: bash
+      run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT # Runs a command on the virtual machine to extract the branch name and store it in a variable
 
     - name: Upload build artifacts # Uploads the build artifacts to GitHub
       uses: actions/upload-artifact@v3 # Using the actions/upload-artifact template
       with:
         # Use the name of the branch
-        name: onionspring-${{ github.ref }}.jar
+        name: onionspring-${{ steps.extract_branch.outputs.branch }}.jar # The name of the build artifact
         path: build/libs/app-0.0.1-SNAPSHOT.jar # The path to the build artifact
