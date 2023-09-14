@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>THE PAYMENT PAGE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+        .name-text {
+            color: orange;
+            font-size: 250%;
+        }
+    </style>
+</head>
+
+<!-- <form action="<c:url value=/payment />" method="POST"> -->
+    <body>
+        <!-- <p class="name-text" th:text="'Email: ' + ${email_name}" /> -->
+        <p>Email name</p>
+        <table>
+            <tr>
+                <td>Name on Card:</td>
+                <td><input type="text" placeholder="Enter the name on the card" required></td>
+            </tr>
+            <tr>
+                <td>Visa Card Number:</td>
+                <td><input type="text" placeholder="Enter Visa card number" required></td>
+            </tr>
+            <tr>
+                <td>CSV:</td>
+                <td><input type="text" placeholder="Enter three diget CSV" required></td>
+            </tr>
+            <tr>
+                <td>Expiry:</td>
+                <td><input type="date" required></td>
+            </tr>
+            <tr>
+                <!-- <td><a type="submit" name="goBack" value="Change Order">Change Order</td>
+                <td><a type="submit" name="finalisePayment" value="Process Payment">Process Payment</td> -->
+                <td>Change Order</td>
+                <td>Process Payment</td>   
+            </tr>
+        </table>
+    </body>
+<!-- </form> -->
+
+</html>
+
+<!-- Display email from account
+     Table: Name on Card, Visa Card Number, CSV, Expiry
+     Buttons: Edit order(returns to cart), provess payment -->
