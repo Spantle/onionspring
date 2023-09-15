@@ -1,9 +1,11 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
-    "editor.defaultFormatter": "redhat.java",
     "editor.formatOnSave": true,
     "java.configuration.updateBuildConfiguration": "automatic",
     "[html]": {
         "editor.defaultFormatter": "vscode.html-language-features"
-    }
+    },
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java",
+    },
 }

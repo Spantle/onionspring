@@ -1,0 +1,50 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client"
+}
+
+model User {
+    id                 Int                 @id @default(autoincrement())
+    createdAt          DateTime            @default(now())
+    email              String              @unique
+    firstName          String
+    lastName           String
+    address            String
+    passwordEncrypted  String
+    isStaff            Boolean             @default(false)
+    paymentInformation PaymentInformation?
+    Order              Order[]
+}
+
+model PaymentInformation {
+    id         Int      @id @default(autoincrement())
+    createdAt  DateTime @default(now())
+    userID     Int      @unique
+    cardType   String
+    cardNumber String
+    cardCVC    String
+    cardExp    String
+    user       User     @relation(fields: [userID], references: [id])
+}
+
+model Item {
+    id          Int      @id @default(autoincrement())
+    createdAt   DateTime @default(now())
+    name        String
+    description String
+    price       Float
+    image       String
+    Order       Order[]
+}
+
+model Order {
+    id        Int      @id @default(autoincrement())
+    createdAt DateTime @default(now())
+    userID    Int
+    user      User     @relation(fields: [userID], references: [id])
+    items     Item[]
+}
