@@ -6,8 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <style>
-        .items-text {
-            color: blue;
+        h1 {
+            color: cornflowerblue;
             font-size: 150%;
         }
 
@@ -24,7 +24,8 @@
 </head>
 
 <body>
-    <p class="items-text" th:text="'Here is the ' + ${action} + '!'" />
+    <a href="/">Home</a>
+    <h1 th:text="'Here is the ' + ${action} + '!'" />
     <ul th:each="item : ${items}">
         <li>
             <img class="item-image" th:src="${item.imageUrl}" alt="Item image" />
