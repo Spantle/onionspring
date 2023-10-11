@@ -34,12 +34,12 @@ jobs:
     - name: Chmod Gradlew # Changes the permissions of the Gradle wrapper
       run: chmod +x gradlew # Allows the Gradle wrapper to be executed
 
-    - name: Set .env file # Sets the DATASOURCE_URL, USERNAME AND PASSWORD
+    - name: Set env vars # Not needed on GitHub Actions
       run: |
-        echo "SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres" > .env &&
-        echo "SPRING_DATASOURCE_USERNAME=postgres" >> .env &&
-        echo "SPRING_DATASOURCE_PASSWORD=postgres" >> .env
-
+        rm -f .env
+        SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+        SPRING_DATASOURCE_USERNAME=postgres
+        SPRING_DATASOURCE_PASSWORD=postgres
 
     - name: Run Unit Tests
       run: ./gradlew test
