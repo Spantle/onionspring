@@ -6,6 +6,18 @@ on: # When the pipeline will run
 jobs:
   gradle: # The name of the job in the pipeline
     runs-on: ubuntu-latest # The virtual machine Operating System that will run the pipeline
+
+    services: # Services that will run alongside the pipeline
+      postgres: # Database
+        image: postgres # Using the "postgres" image
+        env:
+          POSTGRES_PASSWORD: postgres # Set the password for the database
+        options: >- # Set health checks to wait until postgres has started
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps: # The steps that the pipeline will take
     - name: Clone/checkout repository # Clones the GitHub Repository code onto the virtual machine
       uses: actions/checkout@v3 # Using the actions/checkout template
