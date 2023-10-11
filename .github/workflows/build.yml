@@ -36,8 +36,8 @@ jobs:
 
     - name: Set .env file # Sets the DATASOURCE_URL, USERNAME AND PASSWORD
       run: |
-        echo "SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres" > .env
-        echo "SPRING_DATASOURCE_USERNAME=postgres" >> .env
+        echo "SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres" > .env &&
+        echo "SPRING_DATASOURCE_USERNAME=postgres" >> .env &&
         echo "SPRING_DATASOURCE_PASSWORD=postgres" >> .env
 
 
