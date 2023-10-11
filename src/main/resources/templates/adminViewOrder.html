@@ -3,24 +3,52 @@
 
 <head>
     <title>Orders</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <style>
-        h1 {
-            color:cornflowerblue;
-            font-size: 150%;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/adminOrder.css}" />
 </head>
 
 <body>
-    <a href="/">Home</a>
-    <h1>New Orders</h1>
-        <p> incoming orders here </p>
-    <h1>Ongoing Orders</h1>
-        <p> current orders here </p>
-    <h1>Completed Orders</h1>
-        <p> completed orders here</p>
+    <div class="desktop-1">
+        <nav class="desktop-1-child"></nav>
+        <a class="logout" id="logout">
+            <img alt="" src="src/main/resources/static/images/logout.png" th:src="@{images/logout.png}" />
+        </a>
+
+        <a class="ellipse-parent" href="#" aria-label="order">
+            <div class="group-child"></div>
+            <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/order.png"
+                th:src="@{images/order.png}" />
+        </a>
+        <a class="ellipse-group">
+            <div class="group-child"></div>
+            <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/user.png"
+                th:src="@{images/user.png}" />
+        </a>
+
+        <a class="ellipse-container" id="spring-onion" href="/" aria-label="home">
+            <div class="group-child"></div>
+            <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/home.png"
+                th:src="@{images/home.png}" />
+
+            <div class="spring-onion">Spring Onion</div>
+        </a>
+        <div class="admin">admin</div>
+        <div class="current-orders">Current Orders</div>
+        <section class="desktop-1-item"></section>
+        <div class="desktop-1-inner"></div>
+        <div class="current-orders">Current Orders</div>
+        <section class="desktop-1-item"></section>
+        <section class="desktop-1-child1"></section>
+        <div class="desktop-1-inner"></div>
+        <div class="order-history">Order History</div>
+        <img class="line-icon" alt="" src="src/main/resources/static/images/Line 2.png" th:src="@{images/Line 2.png}" />
+
+        <img class="desktop-1-child2" alt="" src="src/main/resources/static/images/Line 4.png"
+            th:src="@{images/Line 4.png}" />
+
+        <section class="desktop-1-child3"></section>
+        <div class="new-orders">New Orders</div>
+    </div>
 </body>
 
 </html>
