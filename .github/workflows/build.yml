@@ -17,6 +17,8 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+        ports:
+            - 5432:5432
 
     steps: # The steps that the pipeline will take
     - name: Clone/checkout repository # Clones the GitHub Repository code onto the virtual machine
@@ -34,22 +36,11 @@ jobs:
     - name: Chmod Gradlew # Changes the permissions of the Gradle wrapper
       run: chmod +x gradlew # Allows the Gradle wrapper to be executed
 
-    - name: Set env vars # Not needed on GitHub Actions
-      run: rm -f .env
-
     - name: Run Unit Tests
       run: ./gradlew test
-      env:
-        SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
-        SPRING_DATASOURCE_USERNAME: postgres
-        SPRING_DATASOURCE_PASSWORD: postgres
 
     - name: Execute Gradle build
       run: ./gradlew build
-      env:
-        SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
-        SPRING_DATASOURCE_USERNAME: postgres
-        SPRING_DATASOURCE_PASSWORD: postgres
 
     - name: Extract branch name
       id: extract_branch
