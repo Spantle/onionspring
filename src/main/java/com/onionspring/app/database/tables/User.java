@@ -46,6 +46,9 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Order> orders = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Session> sessions = new HashSet<>();
+
     public User() {
     }
 
@@ -81,7 +84,7 @@ public class User {
     }
 
     public Boolean validatePassword(String password) {
-        return this.password == password;
+        return this.password.equals(password);
     }
 
     public Boolean getIsStaff() {

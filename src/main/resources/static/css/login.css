@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    background: #EDE9E8;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+nav {
+    background: #C99999;
+    padding: 30px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.icon {
+    padding: 10px;
+    background: #FFE0E0;
+    border-radius: 50%;
+}
+
+.onionspring {
+    font-weight: 500;
+    font-size: 40px;
+}
+
+section {
+    padding: 16px 64px;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 32px;
+    text-decoration: underline;
+    text-decoration-color: #C99999;
+    text-decoration-thickness: 8px;
+    text-underline-offset: 15%;
+}
+
+label {
+    display: inline-block;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+button {
+    margin-top: 16px;
+}
