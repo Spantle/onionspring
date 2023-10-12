@@ -48,11 +48,8 @@
                 <td><label for="cardDate">Expiry:</label></td>
                 <td><input id="cardDate" type="date" name="cardDate" required></td>
             </tr>
-            <tr>
-                <td><button type="submit">Change Order</button></td>
-                <td><button onclick="validateCreditCard()">Process Payment</button></td>
-            </tr>
         </table>
+        <button type="button" onclick="validateCreditCard()">Process Payment</button>
     </form>
 
     <div id="result"></div>
