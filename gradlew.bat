@@ -21,10 +21,6 @@
 @rem
 @rem ##########################################################################
 
-SET SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/postgres
-SET SPRING_DATASOURCE_USERNAME=postgres
-SET SPRING_DATASOURCE_PASSWORD=postgres
-
 @rem Set local scope for the variables with windows NT shell
 if "%OS%"=="Windows_NT" setlocal
 
