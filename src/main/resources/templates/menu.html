@@ -6,34 +6,82 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <style>
-        h1 {
-            color: cornflowerblue;
-            font-size: 150%;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .items-text {
+            color: #333;
+            font-size: 2em;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #008000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            list-style-type: none;
+            justify-content: center;
+        }
+
+        li {
+            width: 300px;
+            margin: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
         }
 
         .item-image {
-            width: 300px;
+            width: 100%;
             height: 200px;
             object-fit: cover;
         }
 
-        ul {
-            list-style-type: none;
+        .item-info {
+            padding: 10px;
+        }
+
+        .item-name {
+            font-size: 1.2em;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #008000;
+            color: #fff;
+            border-radius: 5px;
         }
     </style>
 </head>
 
 <body>
-    <a href="/">Home</a>
-    <h1 th:text="'Here is the ' + ${action} + '!'" />
+    <p class="items-text" th:text="'Here is the ' + ${action} + '!'" />
     <ul th:each="item : ${items}">
         <li>
-            <img class="item-image" th:src="${item.imageUrl}" alt="Item image" />
-            <br>
-            <span th:text="${item.name}">
+            <a th:href="'/' + ${#strings.toLowerCase(#strings.replace(item.name, ' ', '-'))}">
+                <img class="item-image" th:src="${item.imageUrl}" alt="Item image" />
+                <div class="item-info">
+                    <span class="item-name" th:text="${item.name}"></span>
+                </div>
+            </a>
         </li>
     </ul>
-    <a href="/">Go back to menu</a>
+    <a class="back-link" href="/">Go back to menu</a>
 </body>
 
 </html>
