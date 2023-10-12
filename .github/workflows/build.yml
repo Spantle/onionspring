@@ -35,17 +35,21 @@ jobs:
       run: chmod +x gradlew # Allows the Gradle wrapper to be executed
 
     - name: Set env vars # Not needed on GitHub Actions
-      run: |
-        rm -f .env
-        SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
-        SPRING_DATASOURCE_USERNAME=postgres
-        SPRING_DATASOURCE_PASSWORD=postgres
+      run: rm -f .env
 
-    # - name: Run Unit Tests
-    #   run: ./gradlew test
+    - name: Run Unit Tests
+      run: ./gradlew test
+      env:
+        SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+        SPRING_DATASOURCE_USERNAME: postgres
+        SPRING_DATASOURCE_PASSWORD: postgres
 
     - name: Execute Gradle build
       run: ./gradlew build
+      env:
+        SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+        SPRING_DATASOURCE_USERNAME: postgres
+        SPRING_DATASOURCE_PASSWORD: postgres
 
     - name: Extract branch name
       id: extract_branch
