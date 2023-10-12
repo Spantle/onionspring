@@ -41,8 +41,8 @@ jobs:
         SPRING_DATASOURCE_USERNAME=postgres
         SPRING_DATASOURCE_PASSWORD=postgres
 
-    - name: Run Unit Tests
-      run: ./gradlew test
+    # - name: Run Unit Tests
+    #   run: ./gradlew test
 
     - name: Execute Gradle build
       run: ./gradlew build
