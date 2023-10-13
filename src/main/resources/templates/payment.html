@@ -4,8 +4,9 @@
 <head>
     <title>THE PAYMENT PAGE</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/adminOrder.css}" />
 
-    <style>
+    <!-- <style>
         h1 {
             color: cornflowerblue;
             font-size: 150%;
@@ -20,43 +21,70 @@
             color: red;
             font-size: 150%;
         }
-    </style>
+    </style> -->
 </head>
 
 <body>
-    <a href="/">Home</a>
-    <h1>Edit Payment Information</h1>
-    <form>
-        <table>
-            <tr>
-                <td><label for="cardName">Name on Card:</label></td>
-                <td><input id="cardName" type="text" name="cardName" placeholder="Enter the name on the card" required>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="cardNum">Visa Card Number:</label></td>
-                <td><input id="cardNum" type="text" maxlength="19" name="cardNum" placeholder="Enter Visa card number"
-                        required>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="CSV">CSV:</label></td>
-                <td><input id="CSV" type="text" maxlength="3" name="CSV" placeholder="Enter three digit CSV" required>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="cardDate">Expiry:</label></td>
-                <td><input id="cardDate" type="date" name="cardDate" required></td>
-            </tr>
-        </table>
-        <button type="button" onclick="validateCreditCard()">Process Payment</button>
-    </form>
+    <div class="desktop-1">
+        <nav class="desktop-1-child"></nav>
+        <a class="logout" id="logout" href="/logout">
+            <img alt="" src="src/main/resources/static/images/logout.png" th:src="@{images/logout.png}" />
+        </a>
 
-    <div id="result"></div>
+        <a class="ellipse-parent" href="#" aria-label="order">
+            <div class="group-child"></div>
+            <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/order.png"
+                th:src="@{images/order.png}" />
+        </a>
+        <a class="ellipse-group">
+            <div class="group-child"></div>
+            <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/user.png"
+                th:src="@{images/user.png}" />
+        </a>
 
-    <!-- display the result id -->
-    <div th:text="${result}" id="result"></div>
+        <a class="ellipse-container" id="spring-onion" href="/" aria-label="home">
+            <div class="group-child"></div>
+            <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/home.png"
+                th:src="@{images/home.png}" />
 
+            <div class="spring-onion">Spring Onion</div>
+        </a>
+
+        <h1>Edit Payment Information</h1>
+        <form>
+            <table>
+                <tr>
+                    <td><label for="cardName">Name on Card:</label></td>
+                    <td><input id="cardName" type="text" name="cardName" placeholder="Enter the name on the card"
+                            required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="cardNum">Visa Card Number:</label></td>
+                    <td><input id="cardNum" type="text" maxlength="19" name="cardNum"
+                            placeholder="Enter Visa card number" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="CSV">CSV:</label></td>
+                    <td><input id="CSV" type="text" maxlength="3" name="CSV" placeholder="Enter three digit CSV"
+                            required>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="cardDate">Expiry:</label></td>
+                    <td><input id="cardDate" type="date" name="cardDate" required></td>
+                </tr>
+            </table>
+            <button type="button" onclick="validateCreditCard()">Process Payment</button>
+        </form>
+
+        <div id="result"></div>
+
+        <!-- display the result id -->
+        <div th:text="${result}" id="result"></div>
+
+    </div>
 
     <script>
         function validateCreditCard() {
