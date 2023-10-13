@@ -1,23 +1,50 @@
-# 41026 Advanced Software Development 
-
 # Onion Spring
-Onion Spring is an online ordering system for restaurants and customers. 
+41026 Advanced Software Development
 
-# Team Members 
-14344384 Jamie Ocumen Vallo (ovjamie)
-14238683 Marc Gabriel (Meenard)
+Onion Spring is an online ordering system for restaurants and customers.
+
+# Team Members
+- 14344384 Jamie Ocumen Vallo (ovjamie)
+- 14238683 Marc Gabriel (Meenard)
+- 24531838 Matthew Alexander (MatthewAlexander2002)
+- 14281861 Vincent Tran (Vitrecan)
+- 14240384 Sarantis Konstantopedos (Spantle)
 
 # Features
-The key features and functionalities of the project and their respective contributors are as follows: 
+The key features and functionalities of the project and their respective contributors are as follows:
 
-Marc's Features:
-Logout
-    Feature allows users to log out only if they are logged in. The logout is accessible in majority 
-    of the pages except obvious pages such as log in page.
-Cart 
-    Features shows users a summary of their current items before they choose to purchase the items 
-    in the cart. They are able to manage the quantities and remove items if desired.
--------------------------------------------------------------------------------------------------------
+- Jamie: Orders
+- Jamie: View all orders (admin)
+- Marc: Logout
+- Marc: Cart
+- Matthew: Payment
+- Matthew: Search items
+- Vincent: Menu
+- Vincent: Product pages
+- Sarantis: Create account
+- Sarantis: Login
 
-# Installation and Set-up
-Below is a step-by-step guide to running the project: 
+# Repository Structure
+```
+src
+├───main
+│   ├───java
+│   │   └───com
+│   │       └───onionspring
+│   │           └───app
+│   │               ├───api                # API Endpoints
+│   │               ├───controller         # Controllers and instructions to render web pages
+│   │               └───database           # All database related code
+│   │                   ├───repositories   # Repositories define controls to manipulate tables
+│   │                   └───tables         # Tables in the database and their columns/fields
+│   └───resources
+│       ├───static                         # Static web files
+│       │   ├───css
+│       │   └───images
+│       └───templates                      # Dynamic HTML files used by Controllers
+└───test
+    └───java
+        └───com
+            └───onionspring
+                └───app                    # Tests
+```
