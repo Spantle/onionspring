@@ -31,7 +31,7 @@ public class Item {
     @Column(name = "price")
     private float price;
 
-    @Column(name = "image")
+    @Column(name = "image", length = 2048)
     private String image;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {
