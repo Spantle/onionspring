@@ -27,30 +27,17 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void testShowShreghetti() throws Exception {
-        mockMvc.perform(get("/shreghetti"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("shreghetti"));
-    }
-
-    @Test
-    public void testShowCrustyCrabbyBaguette() throws Exception {
-        mockMvc.perform(get("/crusty-crabby-baguette"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("crusty-crabby-baguette"));
-    }
-
-    @Test
-    public void testShowPeppasSnaughtySnacks() throws Exception {
-        mockMvc.perform(get("/peppa’s-snaughty-snacks"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("peppa’s-snaughty-snacks"));
-    }
-
-    @Test
     public void testShowPoptards() throws Exception {
-        mockMvc.perform(get("/poptards"))
+        mockMvc.perform(get("/menu/poptards"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("poptards"));
+                .andExpect(view().name("item"))
+                .andExpect(model().attributeExists("item"));
+    }
+
+    @Test
+    public void testShowNonExistentItem() throws Exception {
+        mockMvc.perform(get("/menu/non-existent-item"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("error"));
     }
 }
