@@ -33,7 +33,13 @@ public class MenuController {
 
         @GetMapping("/item/{itemID}")
         public String showItem(@PathVariable String itemID, Model model) {
-                Optional<Item> optionalItem = itemRepository.findById(Integer.parseInt(itemID));
+                int id;
+                try {
+                        id = Integer.parseInt(itemID);
+                } catch (NumberFormatException e) {
+                        return "error";
+                }
+                Optional<Item> optionalItem = itemRepository.findById(id);
 
                 if (optionalItem.isPresent()) {
                         model.addAttribute("item", optionalItem.get());
