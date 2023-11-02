@@ -27,9 +27,7 @@
 
     <script>
         function validateCreditCard() {
-            var creditCardNumber = document.getElementById('cardNum').value.replace(/\s/g, '');
-
-            if (isValidCreditCard(creditCardNumber)) {
+            if (isValidCreditCard()) {
                 var xhr = new XMLHttpRequest();
                 xhr.open("POST", "/api/placeOrder", true);
                 xhr.send();
@@ -45,29 +43,85 @@
                         }
                     }
                 }
-            } else {
-                alert('Invalid credit card!');
             }
         }
 
-        function isValidCreditCard(cardNumber) {
-            // Perform basic Luhn algorithm check
-            var sum = 0;
-            var doubleUp = false;
+        function isValidCreditCard() {
+            var cardNum = document.getElementById("cardNum").value;
+            var cardName = document.getElementById("cardName").value;
+            var cardDate = document.getElementById("cardDate").value;
+            var CSV = document.getElementById("CSV").value;
 
-            for (var i = cardNumber.length - 1; i >= 0; i--) {
-                var digit = parseInt(cardNumber.charAt(i), 10);
+            var validator = new CardValidator();
 
-                if (doubleUp) {
-                    if ((digit *= 2) > 9) digit -= 9;
+            var validName = validator.validateName(cardName);
+            var validCSV = validator.validateCSV(CSV);
+            var validDate = new Date(cardDate) > new Date();
+            var validCard = validator.validateVisa(cardNum);
+            if (!validName) alert("Invalid name!");
+            else if (!validCSV) alert("Invalid CSV!");
+            else if (!validDate) alert("Invalid date!");
+            else if (!validCard) alert("Invalid card number!");
+            else return true;
+        }
+
+        class CardValidator {
+            constructor() {
+                this.VisaCardPattern = /^4[0-9]{0,}$/;
+                this.namePattern = /([A-Z][a-z]+\s)+[A-Z][a-z]*/;
+                this.CSVPattern = /^[0-9]+$/;
+            }
+
+            validate(pattern, input) {
+                const regEx = new RegExp(pattern);
+                const match = regEx.exec(input);
+                return match !== null;
+            }
+
+            validateName(name) {
+                return this.validate(this.namePattern, name);
+            }
+
+            validateCSV(CSV) {
+                if (CSV.length === 3) {
+                    return this.validate(this.CSVPattern, CSV);
+                } else {
+                    return false;
                 }
-
-                sum += digit;
-                doubleUp = !doubleUp;
             }
 
-            return sum % 10 === 0;
+            // this checks if the card is real by doubling every second number, -9 if
+            // its bigger than 10
+            validNumber(card) {
+                let total = 0;
+                for (let i = card.length - 1; i >= 0; i--) {
+                    let num = parseInt(card.substring(i, i + 1));
+
+                    if ((card.length - i) % 2 === 0) {
+                        let tempNum = num * 2;
+                        if (tempNum > 9) {
+                            tempNum -= 9;
+                        }
+                        num = tempNum;
+                    }
+                    total += num;
+                }
+                return total % 10 === 0;
+            }
+
+            validateVisa(card) {
+                if (
+                    this.validate(this.VisaCardPattern, card) &&
+                    card.length >= 13 &&
+                    card.length <= 16
+                ) {
+                    return this.validNumber(card);
+                } else {
+                    return false;
+                }
+            }
         }
+
 
         window.onload = () => {
             document.getElementById("submit").addEventListener("click", validateCreditCard);
