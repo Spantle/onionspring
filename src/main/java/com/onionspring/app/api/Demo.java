@@ -13,7 +13,6 @@ import com.onionspring.app.database.repositories.UserRepository;
 import com.onionspring.app.database.tables.Item;
 import com.onionspring.app.database.tables.Order;
 import com.onionspring.app.database.tables.User;
-import com.onionspring.app.database.tables.Cart;
 
 @RestController
 public class Demo {

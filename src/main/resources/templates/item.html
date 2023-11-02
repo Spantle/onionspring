@@ -15,11 +15,41 @@
                 <div>
                     <p th:text="${item.description}"></p>
                     <p><strong>Price:</strong> $<span th:text="${item.price}"></span></p>
+                    <br />
+                    <span>Quantity:</span>
+                    <input id="quantity" type="number" name="quantity" value="1" min="1" />
+                    <br />
+                    <button id="add">Add to cart</button>
                 </div>
             </div>
         </section>
-        </div>
-        </div>
+    </main>
+
+    <span class="hidden" th:text="${item.id}" id="id"></span>
+    <script>
+        function addToCart() {
+            var id = document.getElementById("id").textContent;
+            var qty = document.getElementById("quantity").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", `/api/item/${id}?qty=${qty}`, true);
+            xhr.send();
+
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        alert("Added to cart");
+                    } else {
+                        alert("Failed.");
+                    }
+                }
+            };
+        }
+
+        window.onload = () => {
+            document.getElementById("add").addEventListener("click", addToCart);
+        }
+    </script>
 </body>
 
 </html>
