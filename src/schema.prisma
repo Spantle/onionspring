@@ -37,7 +37,7 @@ model Item {
     name        String
     description String
     price       Float
-    image       String
+    image       String  @db.VarChar(500)
     Order       Order[]
 }
 

@@ -1,0 +1,66 @@
+body {
+    background: #eee;
+}
+
+.navbar {
+    background: #C99999;
+}
+
+.navbar>a:not(:first-child) {
+    background: #FFE0E0;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: #C99999;
+    text-decoration-thickness: 8px;
+    text-underline-offset: 15%;
+}
+
+main {
+    width: 100%;
+    padding: 32px;
+}
+
+section {
+    margin: 32px 0;
+}
+
+label {
+    margin: 4px 0;
+    display: block;
+}
+
+button {
+    margin: 16px 0 !important;
+    background: #C99999 !important;
+    padding: 8px 32px !important;
+    border-radius: 8px;
+}
+
+input {
+    border: 2px solid #C99999 !important;
+}
+
+td,
+th {
+    border: 2px solid #C99999;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background: #FFE0E0;
+}
+
+tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+tr:nth-child(odd) {
+    background: #fff;
+}

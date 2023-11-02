@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head.html :: head(title=${item.name})}"></head>
+
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}" />
+
+    <main>
+        <h2 class="title" th:text="${item.name}"></h2>
+
+        <section class="desktop-1-item">
+            <div class="flex flex-wrap gap-8">
+                <img class="max-w-[512px]" th:src="${item.image}" alt="Item image">
+                <div>
+                    <p th:text="${item.description}"></p>
+                    <p><strong>Price:</strong> $<span th:text="${item.price}"></span></p>
+                </div>
+            </div>
+        </section>
+        </div>
+        </div>
+</body>
+
+</html>

@@ -1,71 +1,39 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>THE PAYMENT PAGE</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <style>
-        h1 {
-            color: cornflowerblue;
-            font-size: 150%;
-        }
-
-        .name-text {
-            color: orange;
-            font-size: 250%;
-        }
-
-        #result {
-            color: red;
-            font-size: 150%;
-        }
-    </style>
-</head>
+<head th:replace="~{fragments/head.html :: head(title='Payment Details')}"></head>
 
 <body>
-    <a href="/">Home</a>
-    <h1>Edit Payment Information</h1>
-    <form>
-        <table>
-            <tr>
-                <td><label for="cardName">Name on Card:</label></td>
-                <td><input id="cardName" type="text" name="cardName" placeholder="Enter the name on the card" required>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="cardNum">Visa Card Number:</label></td>
-                <td><input id="cardNum" type="text" maxlength="19" name="cardNum" placeholder="Enter Visa card number"
-                        required>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="CSV">CSV:</label></td>
-                <td><input id="CSV" type="text" maxlength="3" name="CSV" placeholder="Enter three digit CSV" required>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="cardDate">Expiry:</label></td>
-                <td><input id="cardDate" type="date" name="cardDate" required></td>
-            </tr>
-        </table>
-        <button type="button" onclick="validateCreditCard()">Process Payment</button>
-    </form>
+    <div th:replace="~{fragments/navbar :: navbar}" />
 
-    <div id="result"></div>
+    <main>
+        <h2 class="title">Payment Details</h1>
 
-    <!-- display the result id -->
-    <div th:text="${result}" id="result"></div>
+            <section>
+                <label for="cardName">Name on Card:</label>
+                <input id="cardName" type="text" name="cardName">
+                <label for="cardNum">Card Number:</label>
+                <input id="cardNum" type="text" name="cardNum">
+                <label for="CSV">CSV:</label>
+                <input id="CSV" type="text" name="CSV">
+                <label for="cardDate">Expiry:</label>
+                <input id="cardDate" type="date" name="cardDate">
 
+                <br />
+
+                <button id="submit">Process Payment</button>
+            </section>
+    </main>
 
     <script>
         function validateCreditCard() {
             var creditCardNumber = document.getElementById('cardNum').value.replace(/\s/g, '');
 
             if (isValidCreditCard(creditCardNumber)) {
-                document.getElementById('result').innerText = 'Valid credit card!';
+                alert('Success! Order placed!');
+                window.location.href = '/viewOrder';
             } else {
-                document.getElementById('result').innerText = 'Invalid credit card!';
+                alert('Invalid credit card!');
             }
         }
 
@@ -86,6 +54,10 @@
             }
 
             return sum % 10 === 0;
+        }
+
+        window.onload = () => {
+            document.getElementById("submit").addEventListener("click", validateCreditCard);
         }
     </script>
 </body>

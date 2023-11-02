@@ -1,18 +1,17 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Logged out</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/logout.css}" />
-</head>
+<head th:replace="~{fragments/head.html :: head(title='Logged out')}"></head>
 
-<body class="main-page">
-    <div class="center-text">
-        <p>Successfully logged out. Thank you for using Spring Onion.</p>
-        <br>
-        <a href="/">Return to home page</a>
-    </div>
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}" />
+
+    <main>
+        <section class="flex flex-col items-center">
+            <p>Successfully logged out. Thank you for using OnionSpring.</p>
+            <a href="/"><button>Return to home page</button></a>
+        </section>
+    </main>
 </body>
 
 </html>
