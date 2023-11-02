@@ -20,7 +20,7 @@ public class MenuControllerTest {
 
     @Test
     public void testShowAvailableItems() throws Exception {
-        mockMvc.perform(get("/menu"))
+        mockMvc.perform(get("/item"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("menu"))
                 .andExpect(model().attributeExists("items"));
@@ -28,7 +28,7 @@ public class MenuControllerTest {
 
     @Test
     public void testShowPoptards() throws Exception {
-        mockMvc.perform(get("/menu/poptards"))
+        mockMvc.perform(get("/item/poptards"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("item"))
                 .andExpect(model().attributeExists("item"));
@@ -36,7 +36,7 @@ public class MenuControllerTest {
 
     @Test
     public void testShowNonExistentItem() throws Exception {
-        mockMvc.perform(get("/menu/non-existent-item"))
+        mockMvc.perform(get("/item/non-existent-item"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("error"));
     }

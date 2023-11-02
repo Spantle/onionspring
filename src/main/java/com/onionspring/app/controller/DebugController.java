@@ -4,9 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class loggedOutIndexController {
-    @GetMapping("/loggedOutIndex")
-    public String loggedOutIndex() {
-        return "loggedOutIndex";
-    }
+public class DebugController {
+	@GetMapping("/debug")
+	public String showDebug() {
+		return "debug";
+	}
 }

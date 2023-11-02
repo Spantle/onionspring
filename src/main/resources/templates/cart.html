@@ -1,51 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Cart</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/cart.css}" />
-</head>
+<head th:replace="~{fragments/head.html :: head(title='Your Cart')}"></head>
 
 <body>
+    <div th:replace="~{fragments/navbar :: navbar}" />
 
-    <div class="desktop-1">
-        <nav class="desktop-1-child">
-            <a class="logout" id="logout" href="/loggedOutIndex">
-                <img alt="" src="src/main/resources/static/images/logout.png" th:src="@{images/logout.png}" />
-            </a>
-            <a class="ellipse-parent" href="/viewOrder" aria-label="order">
-                <div class="group-child">
-                </div>
-                <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/order.png"
-                    th:src="@{images/order.png}" />
+    <main>
+        <h2 class="title">Your Cart</h2>
 
-            </a>
-            <a class="ellipse-group">
-                <div class="group-child">
-                </div>
-                <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/user.png"
-                    th:src="@{images/user.png}" />
-
-            </a>
-            <a class="ellipse-container" href="#" aria-label="cart">
-                <div class="group-child">
-                </div>
-                <img class="shopping-cart-icon" alt="" src="src/main/resources/static/images/cart.png"
-                    th:src="@{images/cart.png}" />
-
-            </a>
-            <a class="group-a" id="spring-onion" href="/" aria-label="home">
-                <div class="group-child"></div>
-                <img class="shopping-cart-icon" alt="" src="src/main/resources/static/images/home.png"
-                    th:src="@{images/home.png}" />
-
-                <div class="spring-onion">OnionSpring</div>
-            </a>
-        </nav>
-        <div class="current-orders">Cart</div>
-        <section class="desktop-1-item">
-            <table>
+        <section>
+            <table class="w-full">
                 <thead>
                     <th>No.</th>
                     <th>Code</th>
@@ -65,10 +30,9 @@
                 </tbody>
             </table>
         </section>
-        <div class="desktop-1-inner">
-        </div>
-    </div>
 
+        <a href="/payment"><button>Go to checkout</button></a>
+    </main>
 </body>
 
 </html>

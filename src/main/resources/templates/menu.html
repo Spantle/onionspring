@@ -1,64 +1,21 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Menu</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/menu.css}">
-</head>
+<head th:replace="~{fragments/head.html :: head(title='Menu')}"></head>
 
 <body>
-    <div class="desktop-1">
-        <nav class="desktop-1-child">
-            <a class="logout" id="logout">
-                <img alt="" src="src/main/resources/static/images/logout.png" th:src="@{images/logout.png}" />
-            </a>
-            <a class="ellipse-parent" href="/viewOrder" aria-label="order">
-                <div class="group-child">
-                </div>
-                <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/order.png"
-                    th:src="@{images/order.png}" />
-            </a>
-            <a class="ellipse-group">
-                <div class="group-child">
-                </div>
-                <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/user.png"
-                    th:src="@{images/user.png}" />
-            </a>
-            <a class="ellipse-container" href="#" aria-label="cart">
-                <div class="group-child">
-                </div>
-                <img class="shopping-cart-icon" alt="" src="src/main/resources/static/images/cart.png"
-                    th:src="@{images/cart.png}" />
-            </a>
-            <a class="group-a" id="spring-onion" href="/" aria-label="home">
-                <div class="group-child"></div>
-                <img class="shopping-cart-icon" alt="" src="src/main/resources/static/images/home.png"
-                    th:src="@{images/home.png}" />
+    <div th:replace="~{fragments/navbar :: navbar}" />
 
-                <div class="spring-onion">Spring Onion</div>
+    <main>
+        <h2 class="title">The Menu</h2>
+
+        <section class="flex w-full flex-wrap gap-8 justify-center">
+            <a class="flex flex-col items-center gap-2 p-4 bg-white rounded-lg" th:each="item : ${items}" th:href="'/item/' + ${item.id}">
+                <img class="max-w-[256px] max-h-[256px]" th:src="${item.image}" alt="Item image" />
+                <span class="font-bold" th:text="${item.name}"></span>
             </a>
-        </nav>
-        <div class="menu">Menu</div>
-        <section class="desktop-1-item">
-            <div class="parent-container">
-                <div class="desktop-1-inner"></div>
-                <ul th:each="item : ${items}">
-                    <li>
-                        <a th:href="'/menu/' + ${#strings.toLowerCase(#strings.replace(item.name, ' ', '-'))}">
-                            <img class="item-image" th:src="${item.image}" alt="Item image" />
-                            <div class="item-info">
-                                <span class="item-name" th:text="${item.name}"></span>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </section>
-
-    </div>
-
-</html>
+    </main>
 </body>
 
 </html>
