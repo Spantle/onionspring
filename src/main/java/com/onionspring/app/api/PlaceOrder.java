@@ -59,6 +59,8 @@ public class PlaceOrder {
         Order order = new Order(user, orderItems);
         orderRepository.save(order);
 
+        session.setAttribute("cart", "");
+
         return "OK";
     }
 
