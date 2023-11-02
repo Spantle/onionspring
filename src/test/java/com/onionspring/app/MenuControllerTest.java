@@ -1,12 +1,15 @@
 package com.onionspring.app;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -24,23 +27,17 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void testShowShreghetti() throws Exception {
-        mockMvc.perform(get("/shreghetti"))
+    public void testShowPoptards() throws Exception {
+        mockMvc.perform(get("/menu/poptards"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("shreghetti"));
+                .andExpect(view().name("item"))
+                .andExpect(model().attributeExists("item"));
     }
 
     @Test
-    public void testShowCrustyCrabbyBaguette() throws Exception {
-        mockMvc.perform(get("/crusty-crabby-baguette"))
+    public void testShowNonExistentItem() throws Exception {
+        mockMvc.perform(get("/menu/non-existent-item"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("crusty-crabby-baguette"));
-    }
-
-    @Test
-    public void testShowPeppasSnaughtySnacks() throws Exception {
-        mockMvc.perform(get("/peppa’s-snaughty-snacks"))
-                .andExpect(status().isOk())
-                .andExpect(view().name("peppa’s-snaughty-snacks"));
+                .andExpect(view().name("error"));
     }
 }
