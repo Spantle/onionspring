@@ -26,9 +26,11 @@ public class Login {
         if (user != null && user.validatePassword(details.password)) {
             session.setAttribute("user", user.getId());
             session.setAttribute("userFirstname", user.getFirstName());
+            session.setAttribute("isAdmin", user.getIsStaff());
 
             return "ok";
         } else {
+            response.setStatus(400);
             return "error";
         }
     }
