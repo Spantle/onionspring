@@ -30,8 +30,21 @@
             var creditCardNumber = document.getElementById('cardNum').value.replace(/\s/g, '');
 
             if (isValidCreditCard(creditCardNumber)) {
-                alert('Success! Order placed!');
-                window.location.href = '/viewOrder';
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/api/placeOrder", true);
+                xhr.send();
+
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            alert('Success! Order placed!');
+
+                            window.location.href = "/viewOrder";
+                        } else {
+                            alert("Failed.");
+                        }
+                    }
+                }
             } else {
                 alert('Invalid credit card!');
             }

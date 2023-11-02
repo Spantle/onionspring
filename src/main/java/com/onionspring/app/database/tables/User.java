@@ -49,6 +49,10 @@ public class User {
     public User() {
     }
 
+    public User(int id) {
+        this.id = id;
+    }
+
     public User(String email, String firstName, String lastName, String address, String password, Boolean isStaff) {
         this.email = email;
         this.firstName = firstName;

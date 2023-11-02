@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import com.onionspring.app.database.repositories.ItemRepository;
 import com.onionspring.app.database.tables.Item;
+import com.onionspring.utils.CartItem;
+import com.onionspring.utils.CartItems;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -36,59 +38,9 @@ public class cartController {
             }
         }
 
-        List<CartItem> cartItems = new ArrayList<>();
-        for (Item item : items) {
-            int num = 0;
-            for (Item item2 : items) {
-                if (item.getId() == item2.getId()) {
-                    num++;
-                }
-            }
-            boolean found = false;
-            for (CartItem cartItem : cartItems) {
-                if (cartItem.item.getId() == item.getId()) {
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                cartItems.add(new CartItem(item, cartItems.size() + 1, num));
-            }
-        }
+        List<CartItem> cartItems = new CartItems(items).cartItems;
 
         model.addAttribute("items", cartItems);
         return "cart";
-    }
-}
-
-class CartItem {
-    public Item item;
-    public Integer num;
-    public Integer qty;
-
-    public CartItem(Item item, Integer num, Integer qty) {
-        this.item = item;
-        this.num = num;
-        this.qty = qty;
-    }
-
-    public Integer getId() {
-        return item.getId();
-    }
-
-    public String getName() {
-        return item.getName();
-    }
-
-    public String getPrice() {
-        return "$" + item.getPrice();
-    }
-
-    public String getNum() {
-        return num + "";
-    }
-
-    public String getQty() {
-        return qty + "";
     }
 }
