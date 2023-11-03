@@ -46,10 +46,11 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Order> orders = new HashSet<>();
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Session> sessions = new HashSet<>();
-
     public User() {
+    }
+
+    public User(int id) {
+        this.id = id;
     }
 
     public User(String email, String firstName, String lastName, String address, String password, Boolean isStaff) {
@@ -62,8 +63,6 @@ public class User {
     }
 
     public int getId() {
-        System.out.println(id + " " + email + " " + firstName + " " + lastName + " " + address + " "
-                + password + " " + isStaff);
         return id;
     }
 

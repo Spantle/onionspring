@@ -1,88 +1,46 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Orders</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/order.css}" />
-</head>
+<head th:replace="~{fragments/head.html :: head(title='Your Orders')}"></head>
 
 <body>
+    <div th:replace="~{fragments/navbar :: navbar}" />
 
-    <div class="desktop-1">
-        <nav class="desktop-1-child">
-            <a class="logout" id="logout">
-                <img alt="" src="src/main/resources/static/images/logout.png" th:src="@{images/logout.png}" />
-            </a>
-            <a class="ellipse-parent" href="#" aria-label="order">
-                <div class="group-child">
-                </div>
-                <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/order.png"
-                    th:src="@{images/order.png}" />
+    <main>
+        <h2 class="title">Current Orders</h2>
+        <section>
+            <table>
+                <thead>
+                    <th>Order ID</th>
+                    <th>Order Complete</th>
+                </thead>
 
-            </a>
-            <a class="ellipse-group">
-                <div class="group-child">
-                </div>
-                <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/user.png"
-                    th:src="@{images/user.png}" />
-
-            </a>
-            <a class="ellipse-container" href="/cart" aria-label="cart">
-                <div class="group-child">
-                </div>
-                <img class="shopping-cart-icon" alt="" src="src/main/resources/static/images/cart.png"
-                    th:src="@{images/cart.png}" />
-
-            </a>
-            <a class="group-a" id="spring-onion" href="/" aria-label="home">
-                <div class="group-child"></div>
-                <img class="shopping-cart-icon" alt="" src="src/main/resources/static/images/home.png"
-                    th:src="@{images/home.png}" />
-
-                <div class="spring-onion">Spring Onion</div>
-            </a>
-        </nav>
-        <div class="current-orders">Current Orders</div>
-        <section class="desktop-1-item">
+                <tbody>
+                    <tr th:each="order : ${currentOrders}">
+                        <td th:text="${order.id}"></td>
+                        <td th:text="!${order.active}"></td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
-        <div class="desktop-1-inner">
-        </div>
-        <div class="order-history">Order History</div>
-        <section class="rectangle-section">
+
+        <h2 class="title">Order History</h2>
+        <section>
+            <table>
+                <thead>
+                    <th>Order ID</th>
+                    <th>Order Complete</th>
+                </thead>
+
+                <tbody>
+                    <tr th:each="order : ${orders}">
+                        <td th:text="${order.id}"></td>
+                        <td th:text="!${order.active}"></td>
+                    </tr>
+                </tbody>
+            </table>
         </section>
-        <img class="line-icon" alt="" src="src/main/resources/static/images/Line 2.png" th:src="@{images/Line 2.png}" />
-
-    </div>
-
+    </main>
 </body>
-<!-- <body>
-    <div class="desktop-1">
-        <nav class="desktop-1-child"></nav>
-        <a class="logout" id="logout"> </a>
-        <a class="ellipse-parent">
-            <div class="group-child"></div>
-            <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/order.png" />
-        </a>
-        <a class="ellipse-group">
-            <div class="group-child"></div>
-            <img class="purchase-order-icon" alt="" src="src/main/resources/static/images/user.png" />
-        </a>
-        <a class="ellipse-container">
-            <div class="group-child"></div>
-            <img class="shopping-cart-icon" alt="" src="src/main/resources/static/images/cart.png" />
-        </a>
-        <a class="group-a" id="spring-onion">
-            <div class="group-child"></div>
-            <div class="spring-onion">Spring Onion</div>
-        </a>
-        <div class="current-orders">Current Orders</div>
-        <section class="desktop-1-item"></section>
-        <div class="desktop-1-inner"></div>
-        <div class="order-history">Order History</div>
-        <section class="rectangle-section"></section>
-        <img class="line-icon" alt="" src="./public/line-2.svg" />
-    </div>
-</body> -->
 
 </html>

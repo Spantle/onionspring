@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head.html :: head(title='Debug')}"></head>
+
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}" />
+
+    <main>
+        <h2 class="title">Debug</h2>
+        <section class="flex flex-col">
+            <a href="/createAccount"><button>Create Account</button></a>
+            <a href="/login"><button>Login</button></a>
+            <a href="/"><button>View the Menu</button></a>
+            <a href="/viewOrder"><button>View Orders</button></a>
+            <a href="/adminViewOrder"><button>Admin POV: View Orders</button></a>
+            <a href="/payment"><button>Payment Information</button></a>
+            <a href="/cart"><button>View Cart</button></a>
+        </section>
+    </main>
+</body>
+
+</html>

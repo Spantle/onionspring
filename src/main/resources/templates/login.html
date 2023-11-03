@@ -1,15 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Login</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/login.css}" />
+<head th:replace="~{fragments/head.html :: head(title='Login')}"></head>
 
+<body>
     <script>
-        function login(e) {
-            e.preventDefault();
-
+        function login() {
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
 
@@ -24,7 +20,6 @@
             xhr.onreadystatechange = () => {
                 if (xhr.readyState == 4) {
                     if (xhr.status == 200) {
-                        alert("Login successful.");
                         window.location.href = "/";
                     } else {
                         alert("Login failed.");
@@ -34,35 +29,26 @@
         }
 
         window.onload = () => {
-            document.getElementById("submit").addEventListener("submit", login);
+            document.getElementById("submit").addEventListener("click", login);
         }
     </script>
-</head>
 
-<body>
-    <nav>
-        <a href="/">
-            <img class="icon" th:src="@{images/home.png}" />
-        </a>
-        <a href="/">
-            <span class="onionspring">OnionSpring</span>
-        </a>
-    </nav>
+    <div th:replace="~{fragments/navbar :: navbar}" />
 
-    <section>
-        <h1>Login</h1>
-        <form>
-            <label for="email">Email</label>
-            <br />
+    <main>
+        <h2 class="title">Login</h2>
+
+        <section>
+            <label for="email">Email:</label>
             <input id="email" type="text" name="email" />
-            <br />
-            <label for="password">Password</label>
-            <br />
+            <label for="password">Password:</label>
             <input id="password" type="password" name="password" />
+
             <br />
-            <button type="submit" id="submit">Login</button>
-        </form>
-    </section>
+
+            <button id="submit">Login</button>
+        </section>
+    </main>
 </body>
 
 </html>

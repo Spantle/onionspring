@@ -20,7 +20,7 @@ public class MenuController {
         @Autowired
         private ItemRepository itemRepository;
 
-        @GetMapping("/menu")
+        @GetMapping("/")
         public String showAvailableItems(
                         @RequestParam(name = "action", required = false, defaultValue = "menu") String action,
                         Model model) {
@@ -31,9 +31,15 @@ public class MenuController {
                 return "menu";
         }
 
-        @GetMapping("/menu/{itemName}")
-        public String showItem(@PathVariable String itemName, Model model) {
-                Optional<Item> optionalItem = itemRepository.findByName(itemName);
+        @GetMapping("/item/{itemID}")
+        public String showItem(@PathVariable String itemID, Model model) {
+                int id;
+                try {
+                        id = Integer.parseInt(itemID);
+                } catch (NumberFormatException e) {
+                        return "error";
+                }
+                Optional<Item> optionalItem = itemRepository.findById(id);
 
                 if (optionalItem.isPresent()) {
                         model.addAttribute("item", optionalItem.get());
