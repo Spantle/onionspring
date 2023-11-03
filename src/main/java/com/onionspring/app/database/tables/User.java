@@ -63,8 +63,6 @@ public class User {
     }
 
     public int getId() {
-        System.out.println(id + " " + email + " " + firstName + " " + lastName + " " + address + " "
-                + password + " " + isStaff);
         return id;
     }
 
