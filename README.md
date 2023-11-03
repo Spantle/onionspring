@@ -31,16 +31,16 @@ src
 │   ├───java
 │   │   └───com
 │   │       └───onionspring
-│   │           └───app
-│   │               ├───api                # API Endpoints
-│   │               ├───controller         # Controllers and instructions to render web pages
-│   │               └───database           # All database related code
-│   │                   ├───repositories   # Repositories define controls to manipulate tables
-│   │                   └───tables         # Tables in the database and their columns/fields
+│   │           ├───app
+│   │           │   ├───api                # API Endpoints
+│   │           │   ├───controller         # Controllers and instructions to render web pages
+│   │           │   └───database           # All database related code
+│   │           │       ├───repositories   # Repositories define controls to manipulate tables
+│   │           │       └───tables         # Tables in the database and their columns/fields
+│   │   │       └───utils                  # Various util classes
 │   └───resources
 │       ├───static                         # Static web files
 │       │   ├───css
-│       │   └───images
 │       └───templates                      # Dynamic HTML files used by Controllers
 └───test
     └───java
@@ -48,3 +48,10 @@ src
             └───onionspring
                 └───app                    # Tests
 ```
+
+# How to deploy
+1. Install and run [PostgreSQL](https://www.postgresql.org/download/) with the default password of `postgres`.
+2. Download the latest artifact from the "Actions" tab on GitHub.
+3. Extract the .jar from the .zip file into a folder.
+4. Open a terminal and run `java -jar app-0.0.1-SNAPSHOT.jar`
+5. Navigate to http://localhost:8080 once it boots.
