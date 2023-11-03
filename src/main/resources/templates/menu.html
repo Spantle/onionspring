@@ -12,8 +12,11 @@
         <input id="search" type="text" placeholder="Search..." />
 
         <section class="flex w-full flex-wrap gap-8 justify-center">
-            <a class="item flex flex-col items-center gap-2 p-4 bg-white rounded-lg" th:each="item : ${items}" th:href="'/item/' + ${item.id}">
-                <img class="max-w-[256px] max-h-[256px]" th:src="${item.image}" alt="Item image" />
+            <a class="item flex flex-col items-center gap-2 p-4 bg-white rounded-lg" th:each="item : ${items}"
+                th:href="'/item/' + ${item.id}">
+                <div class="flex h-full items-center">
+                    <img class="max-w-[256px] max-h-[256px]" th:src="${item.image}" alt="Item image" />
+                </div>
                 <span class="font-bold" th:text="${item.name}"></span>
             </a>
         </section>

@@ -59,4 +59,45 @@ public class MenuController {
                         itemRepository.save(item);
                 }
         }
+
+        @PostConstruct
+        public void addShreghetti() {
+                String itemName = "Shreghetti";
+                Optional<Item> existingItem = itemRepository.findByName(itemName);
+                if (!existingItem.isPresent()) {
+                        Item item = new Item("Shreghetti",
+                                        "A delicious pasta dish with a twist of fun. Perfect for those who love Italian cuisine with a playful touch.",
+                                        6.90f,
+                                        "https://bit.ly/shreghetti");
+                        itemRepository.save(item);
+                }
+        }
+
+        @PostConstruct
+        public void addCrustyCrabbyBaguette() {
+                String itemName = "Crusty Crabby Baguette";
+                Optional<Item> existingItem = itemRepository.findByName(itemName);
+                if (!existingItem.isPresent()) {
+                        Item item = new Item("Crusty Crabby Baguette",
+                                        "A delicious pasta dish with a twist of fun. Perfect for those who love Italian cuisine with a playful touch.",
+                                        4.20f,
+                                        "https://preview.redd.it/v0c8ym4ieuv21.jpg?width=1080&crop=smart&auto=webp&s=0b4cc9d892972fa08a3d2c7d604cb2a59e5da35c");
+                        itemRepository.save(item);
+                }
+        }
+
+        @PostConstruct
+        public void addPeppasSnaughtySnacks() {
+                String itemName = "Peppa's Snaughty Snacks";
+                Optional<Item> existingItem = itemRepository.findByName(itemName);
+                if (!existingItem.isPresent()) {
+                        Item item = new Item("Peppa's Snaughty Snacks",
+                                        "An assortment of snacks perfect for a quick bite or to satisfy those mid-day cravings. Enjoy the burst of\r\n"
+                                                        + //
+                                                        "            flavors!",
+                                        80.08f,
+                                        "https://preview.redd.it/f8tx6wxdq9l51.jpg?width=1080&crop=smart&auto=webp&s=490a950421454be4cf4ced1819730974c5b1b47d");
+                        itemRepository.save(item);
+                }
+        }
 }
